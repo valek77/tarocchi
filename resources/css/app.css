@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+main {
+    background-image: url("/images/sfondo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;  /* L'immagine viene deformata per riempire sia la larghezza che l'altezza */
+    background-position: center; /* Mantiene l'immagine centrata */
+
+  
+    margin: 0;
+    padding: 0;
+  
+}
+
+
+
+
+.debug{
+    border: 1px solid red;
+}
+
+.debug-blue{
+    border: 1px solid blue;
+}
