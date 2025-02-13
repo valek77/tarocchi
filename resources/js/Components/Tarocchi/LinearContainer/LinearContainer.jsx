@@ -29,6 +29,15 @@ export default function LinearContainer({}) {
                         type: "spring",
                         stiffness: 70
                     }}
+                    whileHover={{
+                        y: -20, // Al passaggio del mouse la carta si alza
+                    }}
+                    whileTap={{
+                        scale: 0.95, // Effetto di pressione quando si clicca
+                    }}
+                
+                
+                
                 >
                     <Carta num={num} height={height} isCoperta={true} />
                 </motion.div>
