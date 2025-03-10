@@ -1,4 +1,11 @@
-import './bootstrap';
+import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as bootstrap from 'bootstrap';
+import '@popperjs/core';
+window.bootstrap = bootstrap;
+
+
+import './bootstrap'; //Intende bootstrap.js non il framework
 
 import { createInertiaApp } from '@inertiajs/svelte'
 

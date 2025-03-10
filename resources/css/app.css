@@ -1,0 +1,31 @@
+/* Reset Universale consigliato */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* elimina definitivamente la scrollbar indesiderata */
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/sfondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: auto; /* solo se vuoi contenuti scrollabili all'interno del main */
+}
+
+
+.debug{
+    border: 1px solid red;
+}
+
+.debug-blue{
+    border: 1px solid blue;
+}
