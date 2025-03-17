@@ -1,23 +1,26 @@
 <script>
-    export let num;
-    export let height="100px";
-    export let isFaceDown=false;
+    import { onMount, onDestroy } from "svelte";
 
+    export let num;
+    export let height = "100px";
+    export let isFaceDown = false;
     let imgUrl;
 
-    if(isFaceDown)
-        imgUrl="/images/dorso.jpg"
-    else
-        imgUrl="/images/"+num+".jpg"
-    
+    onMount(() => {
+        calculateImgUrl();
+    });
 
+    function calculateImgUrl() {
+        if (isFaceDown) imgUrl = "/images/dorso.jpg";
+        else imgUrl = "/images/" + num + ".jpg";
+    }
+
+    function handleClick() {
+        isFaceDown = !isFaceDown;
+        calculateImgUrl();
+    }
 </script>
 
-
-
-
-<div style="height:{height};">
-
-    <img style='height:100%' src={imgUrl} alt="carta"/>
-
+<div style="height:{height};" on:click={handleClick}>
+    <img style="height:100%" src={imgUrl} alt="carta" loading="lazy" />
 </div>
