@@ -10,7 +10,21 @@ class AppController
     public function index(): Response
     {
         return Inertia::render('Index', [
-            'title' => 'Laravel 11s, Inertia., Svelte, Bootstrap 5',
+           
         ]);
+    }
+
+    public function mazzo3Carte():Response{
+        return Inertia::render('MazzoCarte', [
+            'numCarte' => 3,
+        ]);
+
+    }
+
+    public function mazzo5Carte():Response{
+        return Inertia::render('MazzoCarte', [
+            'numCarte' => 5,
+        ]);
+
     }
 }
