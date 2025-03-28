@@ -22,6 +22,18 @@ main {
 }
 
 
+h1 {
+     color: #d6a227 !important;
+    font-size: 36px !important;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400 !important;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 38px !important;
+}
+
+
+
 .debug{
     border: 1px solid red;
 }
@@ -29,3 +41,18 @@ main {
 .debug-blue{
     border: 1px solid blue;
 }
+h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+textarea {
+    background-color: #d6a227;
+    color: #ffffff;
+    resize: none !important;
+  }

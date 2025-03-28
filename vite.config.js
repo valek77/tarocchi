@@ -13,5 +13,15 @@ export default defineConfig({
                 refresh: true
             }
         ),
-    ]
+        
+    ],
+    server:{
+        host:"0.0.0.0",
+        port:5173,
+        hmr:{
+            host:"192.168.5.102",
+            protocol:"ws"
+        },
+        cors:true
+    }
 });

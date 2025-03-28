@@ -1,5 +1,7 @@
 <script>
     import { writable } from "svelte/store";
+    import Titolo from "../Components/Titolo.svelte";
+
     export let numCarte = 3;
     const title = import.meta.env.VITE_APP_NAME;
     const totCarte = 22;
@@ -9,6 +11,7 @@
     const larghezzaTotale = larghezzaCarta + (totCarte - 1) * overlap;
 
     let carteSelezionate = writable([]);
+    let domanda ;
 
     function toggleCarta(i) {
         carteSelezionate.update((selected) => {
@@ -22,10 +25,9 @@
     }
 </script>
 
-<main >
-    <h1 class="d-flex justify-content-center font-bold text-4xl margintop">
-        TAROCCHI GRATIS ONLINE
-    </h1>
+<main class="d-flex flex-column align-items-center">
+    <Titolo testo="TAROCCHI GRATIS ONLINE"></Titolo>
+
     <h4 class="d-flex justify-content-center text-4xl">
         Amore, denaro, lavoro,famiglia, destino, opportunità...
     </h4>
@@ -34,37 +36,64 @@
             Scegli le carte dal mazzo qiu sotto
         </p>
     </div>
-    <div class="carte-container" style="width:{larghezzaTotale}px;">
-        {#each Array(totCarte) as _, i}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div
-                class="carta {$carteSelezionate.includes(i)  ? 'selezionata'   : ''}"
-                style="left:{i * overlap}px; z-index:{$carteSelezionate.includes(i) ? 100 : i}"
-                on:click={() => toggleCarta(i)}
-            />
-        {/each}
+    <div class="carte-wrapper ">
+        <div class="carte-container" style="width:{larghezzaTotale}px;">
+            {#each Array(totCarte) as _, i}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <div
+                    class="carta {$carteSelezionate.includes(i)
+                        ? 'selezionata'
+                        : ''}"
+                    style="left:{i *
+                        overlap}px; z-index:{$carteSelezionate.includes(i)
+                        ? 100
+                        : i}"
+                    on:click={() => toggleCarta(i)}
+                />
+            {/each}
+        </div>
+
+        {#if numCarte==3}
+     
+   
+
+        <div class="d-flex justify-content-center ">
+            <div class="d-flex flex-column align-items-center justify-content-center ">
+                <div>scrivi la tua domanda</div>
+                <input bind:value={domanda} style="width:350px ;" />
+            </div>
+        </div>
+        {/if}
+
+        <button on:click={()=>alert(domanda)} >VAi avanti</button>
     </div>
 </main>
 
 <style>
-    .margintop {
-        margin-top: 20px;
+    .carte-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        margin-top: 50px;
+       
     }
+
     .carte-container {
         position: relative;
         height: 220px;
         margin: 0 auto;
-        margin-top: 100px;
+       
     }
 
     .carta {
         position: absolute;
-        width: 100px;
-        height: 180px;
+        width: 105px;
+        height: 187px;
         background-image: url("/images/dorso.jpg");
-        background-size: cover;
-        border-radius: 10px;
+        background-size: contain;
+
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         cursor: pointer;
         transition:
@@ -79,16 +108,6 @@
     .carta.selezionata {
         transform: translateY(20px);
         z-index: 100;
-    }
-    h1 {
-        color: #d6a227;
-        font-size: 36px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 400;
-        letter-spacing: 2px;
-        text-align: center;
-        margin: 100px 0 10px;
-        line-height: 38px;
     }
     h4 {
         font-family: "Playfair Display", serif;

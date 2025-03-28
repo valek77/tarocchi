@@ -13,7 +13,6 @@
 
 
 
-
 <div class="container d-flex align-items-center justify-content-center transition " 
      style="transform: rotate({angolo}deg) ;"
      on:click={navigate}
@@ -24,7 +23,8 @@
 
 <style>
    .container {
-    background-color:rgba(0, 0, 0, 0.5);
+
+    background:rgba(13, 48, 65, 0.867); ;
     height: 20rem;
     width: 10rem;
     color:white;
@@ -42,8 +42,8 @@
   }
   .transition:hover {
     font-size: 24px;
-    transform: scale(1.2);
-    background-color:rgba(14, 29, 245, 0.5);
+    border: 2px solid #d6a227;
+    color:#d6a227;
   }
 </style>
 

@@ -23,6 +23,7 @@
     }
 </script>
 
+
 <div style="height:{height}; margin-left:{marginLeft} " on:click={handleClick}>
     <img style="height:100%" src={imgUrl} alt="carta" loading="lazy" />
 </div>
