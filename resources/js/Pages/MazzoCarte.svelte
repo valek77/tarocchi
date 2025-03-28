@@ -55,15 +55,12 @@
         </div>
 
         {#if numCarte==3}
-     
-   
-
-        <div class="d-flex justify-content-center ">
-            <div class="d-flex flex-column align-items-center justify-content-center ">
-                <div>scrivi la tua domanda</div>
-                <input bind:value={domanda} style="width:350px ;" />
+            <div class="d-flex justify-content-center ">
+                <div class="d-flex flex-column align-items-center justify-content-center ">
+                    <div>scrivi la tua domanda</div>
+                    <input bind:value={domanda} style="width:350px ;" />
+                </div>
             </div>
-        </div>
         {/if}
 
         <button on:click={()=>alert(domanda)} >VAi avanti</button>
