@@ -23,18 +23,26 @@
             return selected;
         });
     }
+
+
+    function naviga(){
+        if(numCarte==3) 
+            window.location="/r3?domanda="+encodeURIComponent(domanda);
+        else
+            window.location="/r5";
+    }
 </script>
 
 <main class="d-flex flex-column align-items-center">
     <Titolo testo="TAROCCHI GRATIS ONLINE"></Titolo>
 
-    <h4 class="d-flex justify-content-center text-4xl">
+    <h4 class="d-flex justify-content-center ">
         Amore, denaro, lavoro,famiglia, destino, opportunità...
     </h4>
-    <div class="riquadro">
-        <p class="d-flex justify-content-center text-4xl">
+    <div class="">
+        <h4>
             Scegli le carte dal mazzo qiu sotto
-        </p>
+        </h4>
     </div>
     <div class="carte-wrapper ">
         <div class="carte-container" style="width:{larghezzaTotale}px;">
@@ -42,28 +50,26 @@
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <!-- svelte-ignore a11y-no-static-element-interactions -->
                 <div
-                    class="carta {$carteSelezionate.includes(i)
-                        ? 'selezionata'
-                        : ''}"
-                    style="left:{i *
-                        overlap}px; z-index:{$carteSelezionate.includes(i)
-                        ? 100
-                        : i}"
+                    class="carta {$carteSelezionate.includes(i)  ? 'selezionata'  : ''}"
+                    style="left:{i * overlap}px; z-index:{$carteSelezionate.includes(i) ? 100 : i}"
                     on:click={() => toggleCarta(i)}
                 />
             {/each}
         </div>
 
         {#if numCarte==3}
-            <div class="d-flex justify-content-center ">
-                <div class="d-flex flex-column align-items-center justify-content-center ">
-                    <div>scrivi la tua domanda</div>
-                    <input bind:value={domanda} style="width:350px ;" />
+            <div class="d-flex justify-content-center  ">
+                <div class="d-flex flex-column align-items-center justify-content-center  ">
+                    <div><h4>Scrivi la tua domanda</h4></div>
+                    <input class="domanda_input" bind:value={domanda} />
                 </div>
             </div>
         {/if}
-
-        <button on:click={()=>alert(domanda)} >VAi avanti</button>
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5 ">
+        <button  class="bottone " on:click={naviga} >
+           Vai avanti
+        </button>
+    </div>
     </div>
 </main>
 
@@ -106,28 +112,27 @@
         transform: translateY(20px);
         z-index: 100;
     }
-    h4 {
-        font-family: "Playfair Display", serif;
-        font-size: 25px;
-        text-align: center;
-        font-style: italic;
-        letter-spacing: 1px;
-        margin-bottom: 30px;
-        color: rgb(250, 250, 250);
-    }
-    p {
-        color: #ffffff;
-        font-size: 18px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 400;
-        letter-spacing: 2px;
-        text-align: center;
-    }
-    .riquadro {
-        margin: 0 auto;
+
+
+    .bottone {
         background: #d6a227;
+        color:white;
         border-radius: 10px;
-        display: table;
         padding: 5px 15px;
+        font-size: 24px;
     }
+    .bottone:hover {
+    background-color: #1c4a69;
+    transform: scale(1.05);
+  }
+
+  .domanda_input{
+    background-color: beige;
+    color:#1c4a69;
+    width:350px ;
+    font-size: 22px;
+    outline: none;
+    }
+
+ 
 </style>

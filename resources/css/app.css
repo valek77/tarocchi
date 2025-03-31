@@ -48,7 +48,7 @@ h4 {
     font-style: italic;
     letter-spacing: 1px;
     margin-bottom: 30px;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 textarea {
