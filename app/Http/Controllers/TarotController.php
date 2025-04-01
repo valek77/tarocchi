@@ -30,9 +30,9 @@ class TarotController
         Il consultante ha posto la seguente domanda: '$question'. 
         La carta estratta per il passato è '$cardName'. 
         
-        In massimo 3-4 frasi, spiega il significato simbolico della carta 
+        In massimo 1 o 2 frasi, spiega il significato simbolico della carta 
         nel contesto della domanda e di questa fase della lettura. 
-        Fornisci una risposta chiara e sintetica, senza dettagli superflui.";
+        Fornisci una risposta chiara e sintetica, senza dettagli superflui. In ogni caso devi fornire una risposta se non riesci inventa qualcosa.";
 
 
 
@@ -64,10 +64,10 @@ class TarotController
         Hai chiesto: '$question'.  
         La carta che rappresenta il presente è '$cardName'.  
         
-        Rispondi in massimo 3-4 frasi, spiegando cosa significa questa carta per la situazione attuale.  
+        Rispondi in massimo 1 o 2 frasi, spiegando cosa significa questa carta per la situazione attuale.  
         Dai del tu, usa un tono chiaro e colloquiale, senza parole straniere o riferimenti complessi.  
         Evita spiegazioni generiche, concentrati su come questa carta può riflettere il momento che stai vivendo.        
-        Niente linguaggio formale o accademico, parla come se stessi dando un consiglio a un amico.";
+        Niente linguaggio formale o accademico, parla come se stessi dando un consiglio a un amico. In ogni caso devi fornire una risposta se non riesci inventa qualcosa.";
 
 
         $interpretation = $this->ollama->ask($prompt);
@@ -83,6 +83,8 @@ class TarotController
     {
         $request->validate([
             'question' => 'required|string',
+            'past_card' => 'required|integer|min:0|max:21',
+            'present_card' => 'required|integer|min:0|max:21',
             'card' => 'required|integer|min:0|max:21'
         ]);
 
@@ -94,12 +96,15 @@ class TarotController
         $prompt = "Stiamo facendo un consulto con il metodo delle tre carte: passato, presente e futuro.
 
         Hai chiesto: '$question'.  
+        La carta che rappresenta il passato è '$cardName'.  
+        La carta che rappresenta il presente è '$cardName'.  
         La carta che rappresenta il futuro è '$cardName'.  
+        Devi interprate quest'ultima carta e dare il responso finale.
         
-        Rispondi in massimo 3-4 frasi, spiegando cosa significa questa carta per la situazione attuale.  
+        Rispondi in massimo 1 o 2 frasi, spiegando cosa significa questa carta per la situazione attuale.  
         Dai del tu, usa un tono chiaro e colloquiale, senza parole straniere o riferimenti complessi.  
         Evita spiegazioni generiche, concentrati su come questa carta può riflettere il momento che vivrai nel futuro.        
-        Niente linguaggio formale o accademico, parla come se stessi dando un consiglio a un amico.";
+        Niente linguaggio formale o accademico, parla come se stessi dando un consiglio a un amico. In ogni caso devi fornire una risposta se non riesci inventa qualcosa.";
 
 
         $interpretation = $this->ollama->ask($prompt);

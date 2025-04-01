@@ -66,7 +66,7 @@
             </div>
         {/if}
     <div class="d-flex flex-column align-items-center justify-content-center mt-5 ">
-        <button  class="bottone " on:click={naviga} >
+        <button disabled={carteSelezionate.length<numCarte || !domanda} class="bottone " on:click={naviga} >
            Vai avanti
         </button>
     </div>
